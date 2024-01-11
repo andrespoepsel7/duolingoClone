@@ -1,20 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from "react";
+import {View, Alert} from "react-native";
+import styles from './App.styles'
+//import questions from './assets/data/imageMulatipleChoiceQuestions'
+import ImageMultipleChoiceQuestion from "./src/components/ImageMultipleChoiceQuestion/ImageMultipleChoiceQuestion";
+import OpenEndedQuestion from "./src/components/OpenEndedQuestion/OpenEndedQuestion";
+import questions from './assets/data/openEndedQuestions'
 
-export default function App() {
+const App = () => {
+
+  // States
+  const [selected, setSelected] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState(questions[currentIndex])
+
+  // Useefect
+  useEffect(() => {
+    if(currentIndex >= questions.length){
+      Alert.alert("You won")
+      setCurrentIndex(0)
+    }else{
+      setCurrentQuestion(questions[currentIndex])
+    }
+  },[currentIndex])
+
+  const onCorrect = () => {
+    setCurrentIndex(currentIndex+1)
+  }
+
+  const onWrong = () => {
+    Alert.alert("Wrong!")
+  }
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.root}>
+      {/* <ImageMultipleChoiceQuestion 
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      /> */}
+      <OpenEndedQuestion
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onWrong={onWrong}
+      />
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+export default App;
