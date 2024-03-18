@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     fontSize:18,
     fontWeight:'bold',
     alignSelf:'flex-start',
-    marginTop:45,
+    marginTop:30,
   },
   row:{
     flexDirection:'row',

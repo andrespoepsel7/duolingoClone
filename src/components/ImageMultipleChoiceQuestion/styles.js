@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     alignSelf:'stretch',
-    paddingTop: 40,
+    paddingTop:30,
   }, 
   optionsContainer:{
     width: '100%',

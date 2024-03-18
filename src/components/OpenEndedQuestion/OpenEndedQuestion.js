@@ -51,19 +51,9 @@ const OpenEndedQuestion = ({ question, onCorrect, onWrong }) => {
 };
 
 OpenEndedQuestion.propTypes = {
-  question: PropTypes.shape({
-    question: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        correct: PropTypes.bool,
-      })
-    ).isRequired,
-  }), 
+  question: PropTypes.string.isRequired,
   onCorrect: PropTypes.func.isRequired,
   onWrong: PropTypes.func.isRequired,
 };
-
+ 
 export default OpenEndedQuestion;
